@@ -12,7 +12,7 @@ app.use(bodyParser.json());  // This allows you to handle JSON post data.
 // Use your routes
 app.use('/api', routes);
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

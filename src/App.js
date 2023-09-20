@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext } from 'react';
+import AuthContext from './authContext';
+import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
+
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const login = () => {
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        {isAuthenticated ? (
+            <div>
+              <h1>Welcome back!</h1>
+              {/* You can place your main app content here, like the quiz interface */}
+              <button onClick={logout}>Logout</button>
+            </div>
+        ) : (
+            <div>
+              <h1>Welcome to the Quiz App</h1>
+              <LoginForm />
+              <RegisterForm />
+            </div>
+        )}
+      </AuthContext.Provider>
   );
+
 }
 
-export default App;
+export default App
