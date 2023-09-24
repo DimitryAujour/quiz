@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from './authContext';
+import  "./App.css"
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import Quiz from './Quiz'; // Import the Quiz component

@@ -1,6 +1,7 @@
 // LoginForm.js
 import React, { useState, useContext } from 'react';
 import AuthContext from './authContext';
+import styles from './LoginForm.module.css';
 
 function LoginForm() {
     const [username, setUsername] = useState('');
@@ -49,10 +50,10 @@ function LoginForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="submit">Login</button>
+        <form onSubmit={handleSubmit} className={styles.container}>
+            <input type="text" className={styles.inputField} placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="password" className={styles.inputField} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}  />
+            <button type="submit" className={styles.submitButton}>Login</button>
         </form>
     );
 }

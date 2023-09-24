@@ -64,8 +64,17 @@ router.post('/score', (req, res) => {
 
 // Fetch Leaderboard
 router.get('/leaderboard', (req, res) => {
-    // Fetching top scores ordered by score value in descending order
-    db.all("SELECT user_id, score FROM scores ORDER BY score DESC LIMIT 10", (err, rows) => {
+    // Fetching top scores along with the associated username,
+    // ordered by score value in descending order
+    const query = `
+        SELECT users.username, scores.score 
+        FROM scores 
+        JOIN users ON scores.user_id = users.id 
+        ORDER BY score DESC 
+        LIMIT 10
+    `;
+
+    db.all(query, (err, rows) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
