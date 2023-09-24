@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import AuthContext from './authContext';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-
+import Quiz from './Quiz'; // Import the Quiz component
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -20,7 +20,7 @@ function App() {
         {isAuthenticated ? (
             <div>
               <h1>Welcome back!</h1>
-              {/* You can place your main app content here, like the quiz interface */}
+              <Quiz /> {/* Display the Quiz component here */}
               <button onClick={logout}>Logout</button>
             </div>
         ) : (
@@ -32,7 +32,6 @@ function App() {
         )}
       </AuthContext.Provider>
   );
-
 }
 
-export default App
+export default App;
