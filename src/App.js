@@ -26,7 +26,7 @@ function App() {
             </div>
         ) : (
             <div>
-              <h1>Welcome to the Quiz App</h1>
+              <h1 >Welcome to the Quiz App</h1>
               <LoginForm />
               <RegisterForm />
             </div>
